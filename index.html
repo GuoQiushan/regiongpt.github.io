@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>RegionGPT: Towards Region Understanding Vision Language Model</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">RegionGPT: Towards Region Understanding Vision Language Model</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=nDLaim4AAAAJ&hl=zh-CN" target="_blank">Qiushan Guo</a><sup>2</sup>,
+              </span>
+              <span class="author-block"></span>
+                <a href="https://research.nvidia.com/person/shalini-de-mello" target="_blank">Shalini De Mello</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://hongxu-yin.github.io/" target="_blank">Hongxu Yin</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://wonmin-byeon.github.io/" target="_blank">Wonmin Byeon</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.math.hkbu.edu.hk/people/cheung-ka-chun-charles/" target="_blank">Ka Chun Cheung</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://i.cs.hku.hk/~yzyu/" target="_blank">Yizhou Yu</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="http://luoping.me/" target="_blank">Ping Luo</a><sup>2</sup>
+              </span>
+              <span class="author-block">
+                <a href="https://sifeiliu.net/" target="_blank">Sifei Liu</a><sup>1</sup>
+              </span>
+              
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">Nvidia<sup>1</sup>, The University of Hong Kong<sup>2</sup></span>
+                <span class="eql-cntrb"><small><br>
+                  <!-- <sup>*</sup>Indicates equal contribution. <br> 
+                  <sup>†</sup>Indicates project lead. <sup>‡</sup>Indicates corresponding authors. <br> -->
+                  Work done during Qiushan's internship at Nvidia Research.
+                </small></span>
+              </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Vision language models (VLMs) have experienced rapid advancements through the integration of large language models (LLMs) with image-text pairs, yet they struggle with detailed regional visual understanding due to limited spatial awareness of the vision encoder, and the use of coarse-grained training data that lacks detailed, region-specific captions.
+            To address this, we introduce RegionGPT (short as RGPT), a novel framework designed for complex region-level captioning and understanding. RGPT enhances the spatial awareness of regional representation with simple yet effective modifications to existing visual encoders in VLMs. We further improve performance on tasks requiring a specific output scope by integrating task-guided instruction prompts during both training and inference phases, while maintaining the model's versatility for general-purpose tasks. Additionally, we develop an automated region caption data generation pipeline, enriching the training set with detailed region-level captions. 
+            We demonstrate that a universal RGPT model can be effectively applied and significantly enhancing performance across a range of region-level tasks, including but not limited to complex region descriptions, reasoning, object classification, and referring expressions comprehension.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Teaser Reults -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-3">Problem Overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce RegionGPT that enables complex <b> region-level </b> captioning, reasoning, classification, 
+            and referring expression comprehension capabilities for the multimodal large language model. 
+            Users can input regions of interest of <b>any shape</b>, utilizing <b>&lt;region&gt;</b> as a placeholder within the instruction at any position. 
+            Such placeholders are subsequently replaced with semantic region-level embeddings that are fed into the language decoder.
+          </p>
+          <img src="./static/images/teaser-danny-v4.png" alt="FID" class="method-overview-full-img  method-overview" draggable="false" />
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Teaser Reults -->
+
+
+<!-- Architecture -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-3">RegionGPT Architecture</h2>
+        <div class="content has-text-justified">
+          <p class="equation-text">
+            Starting from a visual backbone, we extract low-resolution semantic features from an input image \(X_v\). 
+            Then, a feature refinement module is composed to obtain higher-resolution feature maps. With a patch merge module, 
+            the feature maps are further merged to reduce the length of input image-level sequence. 
+            The mask features are obtained by averaging the feature in the target region \(X_r\), inputted as another branch, 
+            with Mask Pooling layer. Both the image-level feature and region-level feature share the connector for semantic consistency. 
+            The example interactions demonstrate the model's capabilities in complex region-level description, reasoning, 
+            object classification, and referring expression comprehension.
+          </p>
+          <img src="./static/images/rgpt_architecture.gif" alt="Model Architecture" class="method-overview-full-img  method-overview" draggable="false" />
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Architecture -->
+
+<!-- Data PPL -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-3">VLM-assistant Region Caption Generation</h2>
+        <div class="content has-text-justified">
+          <p class="equation-text">
+            We explore using an existing global-level image captioning VLM, i.e., LLaVA for region-specific tasks. 
+            The proposed pipeline is composed of two stages.
+          </p>
+          <p class="equation-text">
+            In the first stage, we generate a global-level caption for the image using the VLM. 
+            This global description is then used as contextual information, 
+            which we include in the form of text at the beginning of the prompt. Subsequently in the second stage, 
+            by inputting the ROI, the VLM is prompted to describe the specific region represented by the image patch. 
+            We illustrate this approach with a detailed example in the following:
+          </p>
+
+          <h2 class="title is-6">
+            In the context of the entire image, &lt;GlobalCaption&gt;, describe the close-up region in detail.
+          </h2>
+          
+          <p>
+            We further enhance our approach by incorporating human-annotated class names as an additional condition 
+            when prompting the VLM to describe the properties of the region:
+          </p>
+          <h2 class="title is-6">
+            In the context of the entire image, &lt;GlobalCaption&gt;, describe the &lt;ClassName&gt; in the close-up region in detail.
+          </h2>
+            
+          
+          <img src="./static/images/rgpt_data.gif" alt="Data PPl" class="method-overview-full-img  method-overview" draggable="false" />
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Data PPL -->
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-three-fifths">
+          <h2 class="title is-3">Qualitative Results</h2>
+          <h2 class="title is-5">Complex region-level reasoning</h2>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container is-max-desktop">
+      <div id="results-carousel" class="carousel results-carousel">
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/rgpt_reasoning_1.png" alt=""/>
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/rgpt_reasoning_2.png" alt=""/>
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/rgpt_reasoning_3.png" alt=""/>
+        </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+<!-- Demo Reults -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-5">Object classification & Referring Expression Comprehension</h2>
+        <div class="content has-text-justified">
+          <!-- <p>
+            <b>Comparisons</b> of RAPHAEL with the recent representative text-to-image generation models on the MS-COCO using zero-shot
+            FID-30k. We see that RAPHAEL outperforms all previous works in image quality, even a commercial product released recently.
+          </p> -->
+          <img src="./static/images/rgpt_cls_rec.png" alt="FID" class="method-overview-full-img  method-overview" draggable="false" />
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Demo Reults -->
+
+<!-- Demo Reults -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-5">ChatBot Demo</h2>
+        <div class="content has-text-justified">
+          <!-- <p>
+            <b>Comparisons</b> of RAPHAEL with the recent representative text-to-image generation models on the MS-COCO using zero-shot
+            FID-30k. We see that RAPHAEL outperforms all previous works in image quality, even a commercial product released recently.
+          </p> -->
+          <img src="./static/images/caption.gif" alt="FID" class="method-overview-full-img  method-overview" draggable="false" />
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Demo Reults -->
+
+
+<!-- Paper Reults -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-three-fifths">
+        <h2 class="title is-3">Quantitative Results</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/rgpt_quantitative.png" alt="" class="method-overview-full-img  method-overview" draggable="false" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper Reults -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
